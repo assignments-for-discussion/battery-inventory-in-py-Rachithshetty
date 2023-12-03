@@ -72,7 +72,6 @@ def test_bucketing_by_health():
   # Test Case 7: All batteries at the SoH boundary (80%)
   present_capacities = [96, 100, 84, 80, 82]
   counts = count_batteries_by_health(present_capacities)
-  print("Actual counts:", counts)
   assert counts["healthy"] == 1
   assert counts["exchange"] == 4
   assert counts["failed"] == 0
