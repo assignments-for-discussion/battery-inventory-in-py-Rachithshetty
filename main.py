@@ -8,7 +8,7 @@ def count_batteries_by_health(present_capacities):
   rated_capacity = 120  # Rated capacity of a new battery in Ah
 
   # Function to calculate SoH%
-   def calculate_soh(present_capacity):
+  def calculate_soh(present_capacity):
       return (present_capacity / rated_capacity) * 100
 
   # Classify batteries based on SoH and update counts
@@ -32,7 +32,7 @@ def test_bucketing_by_health():
   assert(counts["healthy"] == 2)
   assert(counts["exchange"] == 3)
   assert(counts["failed"] == 1)
-  print("Done counting :)")
+  print("Done counting :")
 
 
 if __name__ == '__main__':
