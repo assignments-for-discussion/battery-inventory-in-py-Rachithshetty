@@ -27,13 +27,35 @@ def count_batteries_by_health(present_capacities):
 
 def test_bucketing_by_health():
   print("Counting batteries by SoH...\n")
+  # Test Case 1
   present_capacities = [113, 116, 80, 95, 92, 70]
   counts = count_batteries_by_health(present_capacities)
   assert(counts["healthy"] == 2)
   assert(counts["exchange"] == 3)
   assert(counts["failed"] == 1)
-  print("Done counting :")
 
+  # Test Case 2: All healthy batteries
+  present_capacities = [110, 115, 120, 118, 105]
+  counts = count_batteries_by_health(present_capacities)
+  assert counts["healthy"] == 5
+  assert counts["exchange"] == 0
+  assert counts["failed"] == 0
+
+  # Test Case 3: All failed batteries
+  present_capacities = [50, 45, 55, 40, 30]
+  counts = count_batteries_by_health(present_capacities)
+  assert counts["healthy"] == 0
+  assert counts["exchange"] == 0
+  assert counts["failed"] == 5
+
+  # Test Case 4: Mix of healthy, exchange, and failed
+  present_capacities = [90, 75, 82, 105, 62, 78, 55]
+  counts = count_batteries_by_health(present_capacities)
+  assert counts["healthy"] == 3
+  assert counts["exchange"] == 2
+  assert counts["failed"] == 2
+
+  print("All assertions passed. Done counting :")
 
 if __name__ == '__main__':
   test_bucketing_by_health()
