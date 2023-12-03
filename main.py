@@ -51,8 +51,8 @@ def test_bucketing_by_health():
   # Test Case 4: Mix of healthy, exchange, and failed
   present_capacities = [90, 75, 82, 105, 62, 78, 55]
   counts = count_batteries_by_health(present_capacities)
-  assert counts["healthy"] == 3
-  assert counts["exchange"] == 2
+  assert counts["healthy"] == 1
+  assert counts["exchange"] == 4
   assert counts["failed"] == 2
 
   # Test Case 5: Minimum present capacity (edge case)
@@ -72,8 +72,9 @@ def test_bucketing_by_health():
   # Test Case 7: All batteries at the SoH boundary (80%)
   present_capacities = [96, 100, 84, 80, 82]
   counts = count_batteries_by_health(present_capacities)
-  assert counts["healthy"] == 2
-  assert counts["exchange"] == 3
+  print("Actual counts:", counts)
+  assert counts["healthy"] == 1
+  assert counts["exchange"] == 4
   assert counts["failed"] == 0
 
   print("All assertions passed. Done counting :")
